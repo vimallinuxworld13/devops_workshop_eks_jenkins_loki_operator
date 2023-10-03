@@ -5,6 +5,15 @@ $ eksctl create cluster --name mycluster1 --region=us-east-1
 $ eksctl get  cluster --name mycluster1 --region=us-east-1
 $ kubectl get nodes
 
+kubectl create -f \
+https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/master/deploy/upstream/quickstart/crds.yaml
+kubectl create -f \
+https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/master/deploy/upstream/quickstart/olm.yaml
+
+kubectl get catalogsources -n olm
+kubectl get packagemanifests -l catalog=operatorhubio-catalog
+
+
 $ kubectl create namespace lwns
 $ ./helm.exe  repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
 $ ./helm.exe install my-jenkins-operator jenkins/jenkins-operator -n lwns --set jenkins.enabled=false
@@ -97,6 +106,11 @@ Loki log explorer and give this LogQL query in Grafana:
 Clean up:
 $ helm delete loki 
 $ kubectl delete deploy loki-medium-logs 
+
+
+
+https://grafana.com/grafana/dashboards/15141-kubernetes-service-logs/
+https://grafana.com/grafana/dashboards/315-kubernetes-cluster-monitoring-via-prometheus/
 
 
 
