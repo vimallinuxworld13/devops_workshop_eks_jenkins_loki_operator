@@ -1,5 +1,5 @@
 # devops_workshop_eks_jenkins_loki_operator
-# https://jenkinsci.github.io/kubernetes-operator/docs/getting-started/latest/installing-the-operator/
+
 
 $ eksctl create cluster --name mycluster1 --region=us-east-1
 $ eksctl get  cluster --name mycluster1 --region=us-east-1
