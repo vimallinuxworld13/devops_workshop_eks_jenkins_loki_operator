@@ -79,6 +79,26 @@ $ kubectl --namespace lwns get secret jenkins-operator-credentials-example -o 'j
 $ kubectl --namespace lwns port-forward jenkins-example 8080:8080
 
 
+$ ./helm.exe  repo add grafana https://grafana.github.io/helm-charts
+$ ./helm.exe  repo update
+
+$ ./helm.exe upgrade --install loki grafana/loki-stack  --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false
+
+$ kubectl patch svc loki-grafana -p '{"spec": {"type": "LoadBalancer"}}'
+$ kubectl get svc loki-grafana -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+
+$ kubectl get secret loki-grafana -o go-template='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'
+
+
+Loki log explorer and give this LogQL query in Grafana:
+{app="loki-medium-logs",namespace="default"}
+{namespace="lwns"}
+
+Clean up:
+$ helm delete loki 
+$ kubectl delete deploy loki-medium-logs 
+
+
 
 
 
