@@ -43,6 +43,7 @@ https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/
 kubectl get catalogsources -n olm
 kubectl get packagemanifests -l catalog=operatorhubio-catalog
 
+https://github.com/helm/helm/releases
 
 $ kubectl create namespace lwns
 $ ./helm.exe  repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
