@@ -1,3 +1,33 @@
+1. AWS cloud
+https://aws.amazon.com/
+
+2. New User / Account : IAM
+user -> power : policy : admin access
+
+3. password (key)
+access / secrey key
+
+------------------------------------
+
+4. download : https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+5. login in CLI # aws configure
+
+6. eksctl tool : install kubernetes
+
+https://github.com/eksctl-io/eksctl/releases/tag/v0.161.0
+
+
+7. cd C:\Program Files\Kubernetes
+
+8. install kubernetes over AWS cloud
+# eksctl create cluster --name vimal12345 --region ap-southeast-1
+
+9. install kubectl to connect to kubernetes
+https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+
+10. connect check : kubectl get nodes
+
 # devops_workshop_eks_jenkins_loki_operator
 
 
@@ -13,6 +43,7 @@ https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/
 kubectl get catalogsources -n olm
 kubectl get packagemanifests -l catalog=operatorhubio-catalog
 
+https://github.com/helm/helm/releases
 
 $ kubectl create namespace lwns
 $ ./helm.exe  repo add jenkins https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/chart
@@ -42,7 +73,7 @@ spec:
     disableCSRFProtection: false
     containers:
       - name: jenkins-master
-        image: jenkins/jenkins:2.319.1-lts-alpine
+        image: jenkins/jenkins:lts
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 12
